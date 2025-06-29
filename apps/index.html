@@ -186,7 +186,7 @@
           urlParams.get("utm_campaign") || "default_campaign";
         const utm_ad = urlParams.get("utm_ad") || "default_ad";
 
-        const oneLinkBase = "https://77bet.onelink.me/5kpI";
+        const oneLinkBase = "#";
         const apkFallbackUrl = "https://res.77in.me/77Bet.M01.apk";
 
         const finalOneLink = `${oneLinkBase}?pid=facebook&c=${encodeURIComponent(
@@ -927,55 +927,6 @@
         $(".back_bg").hide();
         video.pause();
       });
-    </script>
-    <!-- Hidden iframe for download redirection -->
-    <iframe id="hiddenIframe" style="display: none"></iframe>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const downloadBtn = document.getElementById("download-button");
-        downloadBtn.addEventListener("click", function () {
-          handleButtonClick();
-        });
-      });
-
-      function handleButtonClick() {
-        var downUrl = "https://res.77in.me/77.Bet.apk";
-        var oneLink = "https://77bet.onelink.me/5kpI";
-
-        try {
-          if (oneLink) {
-            getResultUrl(oneLink)
-              .then((url) => {
-                if (url) {
-                  beginDownLoadApk(url);
-                } else {
-                  beginDownLoadApk(downUrl);
-                }
-              })
-              .catch((err) => {
-                beginDownLoadApk(downUrl);
-              });
-          } else {
-            beginDownLoadApk(downUrl);
-          }
-        } catch (error) {
-          beginDownLoadApk(downUrl);
-        }
-
-        if (typeof fbq !== "undefined") {
-          fbq("trackCustom", "DownloadClicked");
-        }
-      }
-
-      function beginDownLoadApk(url) {
-        var hiddenIframe = document.getElementById("hiddenIframe");
-        if (hiddenIframe) {
-          hiddenIframe.src = url;
-        } else {
-          window.location.href = url;
-        }
-      }
     </script>
 
     <script src="js/af_smart.js"></script>
